@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmeService } from '../filme.service';
 import { Router } from '@angular/router';
+import { Filme } from '../filme.model';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
 
-  filme: any;
+  filme: Filme;
 
   constructor(
     public filmeService: FilmeService, 
@@ -21,7 +22,7 @@ export class CreateComponent implements OnInit {
     this.filme = {};
   }
 
-  postFilme(form){
+  postFilme(form: Filme): void{
     this.filmeService.postFilmes(this.filme).subscribe(res =>{
       console.log(res);
       console.log("Cadastro Efetuado com sucesso!!")
